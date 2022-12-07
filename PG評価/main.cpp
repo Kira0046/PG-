@@ -16,39 +16,54 @@ void index(CELL* head);
 int main() {
 	int val;
 
+	int inputNumber = 0;
+
 	CELL head;
 	head.next = nullptr;
+	printf("5‰ñ‚Ü‚Å“ü—Í‰Â”\\n");
 	while (true)
 	{
+		printf("D‚«‚È”Žš‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\n");
+
 		scanf_s("%d", &val);
 
 		create(&head, val);
 
 		index(&head);
 
+		inputNumber += 1;
+		if (inputNumber == 5) {
+			break;
+		}
 	}
 	return 0;
 }
 
 void create(CELL* head,int val) {
-	CELL* next;
+	CELL* newCell;
 
-	next = (CELL*)malloc(sizeof(CELL));
+	newCell = (CELL*)malloc(sizeof(CELL));
 	
-	head->val = val;
-	head->next = nullptr;
+	newCell->val = val;
+	newCell->next = nullptr;
 
 	while (head->next!=nullptr)
 	{
 		head = head->next;
 	}
-	head->next = next;
+	head->next = newCell;
 }
 
 void index(CELL* head) {
+	printf("\nŒ‹‰Ê:");
 	while (head->next != nullptr)
 	{
 		head = head->next;
-		printf("%d\n", head->val);
+		if (head->next != nullptr) {
+			printf("%d,", head->val);
+		}
+		if (head->next == nullptr) {
+			printf("%d\n", head->val);
+		}
 	}
 }
